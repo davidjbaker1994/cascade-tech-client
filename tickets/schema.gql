@@ -1,0 +1,8 @@
+type Submitted {
+    text: String!
+    problem_class: Int!
+ }
+
+ type Query {
+    allSubmitted: [Submitted!]!
+ }

@@ -1,29 +1,61 @@
-import React from 'react'
+import React, { useState } from 'react';
 
-const UserLoginForm = () => (
-    <div className="image_css" >
+const UserLoginForm = () => {
+    
+    const [formValues, setFormValues] = useState({
+        email: '',
+      password: ''
+    });
+
+    const handleInputChange = (event) => {
+        const { value, name } = event.target;
+        setFormValues({
+          ...formValues,
+          [name]: value,
+        });
+    }
+/*
+    const handleSubmit = (e) => {
+        e.preventDefault();
+        handleLogin(formValues);
+    }
+
+    const handleLogin = async ( formValues ) => {
+        await identity.login({
+          email: formValues.email,
+          password: formValues.password
+        })
+        .catch((e) => {
+            console.log(e);
+        });
+    }
+*/
+
+    return (
+        <div className="image_css" >
         <div className="groove">
             <nav className="form_header">
-                <a href="#" class="red">red</a>
-                <a href="#" class="yellow">minimize</a>
-                <a href="#" class="green">maximize</a>
+                <a href="#" className="red">red</a>
+                <a href="#" className="yellow">minimize</a>
+                <a href="#" className="green">maximize</a>
                 <h3>User Login</h3>
             </nav>
-            <div class="form">
-                <div class="nice-input ">  
-                    <div class="right-inner-addon ">
-                        <li class="profile"><i href="#non"></i>&#160;</li>
-                        <input class="input_username" type="text" placeholder="Username" name="name" data-name="Name" />
+            <form className="form">
+                <div className="nice-input ">  
+                    <div className="right-inner-addon ">
+                        <li className="profile"><i href="#non"></i>&#160;</li>
+                        <input className="input_username" type="text" placeholder="Email" name="email" data-name="Name" onChange={handleInputChange} value={formValues.email} />
                     </div>  
-                    <div class="right-inner-addon ">
-                        <li class="lock"><i href="#non"></i>&#160;</li>
-                            <input class="input_password" type="text" placeholder="Password" required="required" />
+                    <div className="right-inner-addon ">
+                        <li className="lock"><i href="#non"></i>&#160;</li>
+                            <input className="input_password" type="text" placeholder="Password" name="password" onChange={handleInputChange} value={formValues.password} required="required" />
                     </div>  
                 </div>   	  
-                <input class="button_signin" type="submit" value="Sign In" data-wait="Please wait..." />
-            </div>
+                <input className="button_signin" type="submit" value="Sign In" data-wait="Please wait..." />
+            </form>
         </div>	  
     </div>
-)
+    )
+}
 
 export default UserLoginForm
