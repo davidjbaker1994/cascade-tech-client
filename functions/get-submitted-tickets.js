@@ -1,4 +1,4 @@
-const query = require("./utils/query");
+const query = require("./utils/query").default;
 
 const GET_SUBMITTED_TICKETS = `
   query {
