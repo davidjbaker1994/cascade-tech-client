@@ -4,7 +4,7 @@ import { Link } from "gatsby"
 
 import Layout from "../components/layout"
 import Seo from "../components/seo"
-//import UserLoginForm from "../components/user-login-form"
+import UserLoginForm from "../components/user-login-form"
 
 
 
@@ -13,8 +13,7 @@ const IndexPage = () => {
   return (
     <Layout>
       <Seo title="Home" />
-      
-      
+      <UserLoginForm />
       <Link to="/page-2/">Go to page 2</Link>
     </Layout>
   )

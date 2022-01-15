@@ -34,12 +34,6 @@ module.exports = {
       },
     },
     `gatsby-plugin-netlify`,
-    {
-      resolve: `gatsby-plugin-netlify-identity`,
-      options: {
-        url: `https://cascade-tech-client.netlify.app/.netlify/identity`
-      }
-    },
     // this (optional) plugin enables Progressive Web App + Offline functionality
     // To learn more, visit: https://gatsby.dev/offline
     // `gatsby-plugin-offline`,

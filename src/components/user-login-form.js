@@ -1,11 +1,19 @@
 import React, { useState } from 'react';
+import GoTrue from 'gotrue-js';
+
 
 const UserLoginForm = () => {
-    
     const [formValues, setFormValues] = useState({
         email: '',
       password: ''
     });
+    
+    const auth = new GoTrue({
+        APIUrl: 'https://cascade-tech-client.netlify.app/.netlify/identity',
+        audience: '',
+        setCookie: false,
+      });
+    
 
     const handleInputChange = (event) => {
         const { value, name } = event.target;
@@ -14,11 +22,15 @@ const UserLoginForm = () => {
           [name]: value,
         });
     }
-/*
-    const handleSubmit = (e) => {
+
+    const handleSignUp = (e) => {
         e.preventDefault();
-        handleLogin(formValues);
+        console.log(formValues)
+        auth.signup(formValues.email, formValues.password)
+            .then((response) => console.log('Confirmation email sent', response))
+            .catch((error) => console.log("It's an error", error));
     }
+/*
 
     const handleLogin = async ( formValues ) => {
         await identity.login({
@@ -40,7 +52,7 @@ const UserLoginForm = () => {
                 <a href="#" className="green">maximize</a>
                 <h3>User Login</h3>
             </nav>
-            <form className="form">
+            <form className="form" onSubmit={handleSignUp}>
                 <div className="nice-input ">  
                     <div className="right-inner-addon ">
                         <li className="profile"><i href="#non"></i>&#160;</li>

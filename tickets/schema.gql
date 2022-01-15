@@ -1,8 +1,15 @@
 type Submitted {
     text: String!
-    problem_class: Int!
+    problem: ProblemClass!
  }
 
  type Query {
     allSubmitted: [Submitted!]!
+ }
+
+ enum ProblemClass {
+    CLASS1
+    CLASS2
+    CLASS3
+    CLASS4
  }
