@@ -1,6 +1,6 @@
 const query = require("./utils/query");
 
-const GET_SUBMITTED = `
+const GET_SUBMITTED_TICKETS = `
   query {
     allSubmitted {
       data {
@@ -13,7 +13,7 @@ const GET_SUBMITTED = `
  `;
 
   exports.handler = async () => {
-     const { data, errors } = await query(GET_SUBMITTED);
+     const { data, errors } = await query(GET_SUBMITTED_TICKETS);
 
      if (errors) {
         return {

@@ -1,6 +1,6 @@
 const query = require("./utils/query");
 
-const CREATE_TICKET = `
+const SUBMIT_TICKET = `
   mutation($text: String!, $problem_class: Int!){
     createSubmitted(data: {text: $text, problem_class: $problem_class}){
       _id
@@ -13,7 +13,7 @@ const CREATE_TICKET = `
 exports.handler = async event => {
   const { text, problem_class } = JSON.parse(event.body);
   const { data, errors } = await query(
-          CREATE_TICKET, { 
+          SUBMIT_TICKET, { 
 text, problem_class});
 
   if (errors) {
