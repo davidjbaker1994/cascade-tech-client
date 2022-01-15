@@ -5,12 +5,13 @@
  * See: https://www.gatsbyjs.com/docs/use-static-query/
  */
 
-import * as React from "react"
-import PropTypes from "prop-types"
+import React, {useState} from "react"
 import { useStaticQuery, graphql } from "gatsby"
+import IdentityModal, { useIdentityContext } from "react-netlify-identity-widget"
 
 import Header from "./header"
 import "./layout.css"
+import "react-netlify-identity-widget/styles.css" // delete if you want to bring your own CSS
 
 const Layout = ({ children }) => {
   const data = useStaticQuery(graphql`
@@ -23,23 +24,30 @@ const Layout = ({ children }) => {
     }
   `)
 
+  const identity = useIdentityContext();
+  const [dialog, setDialog] = useState(true);
+  const name = (identity && identity.user && identity.user.user_metadata && identity.user.user_metadata.name) || "NoName";
+
+  console.log(JSON.stringify(identity))
+  const isLoggedIn = identity && identity.isLoggedIn
+
   return (
     <>
       <Header siteTitle={data.site.siteMetadata?.title || `Title`} />
-      <div>
-        <main>{children}</main>
-        <footer>
+      <nav style={{ background: "green" }}>
+        {" "}
+        Login Status:
+          {isLoggedIn ? `Hello ${name}, Log out here!` : "LOG IN"}
+      </nav>
+      <main>{children}</main>
+      <IdentityModal showDialog={dialog} onCloseDialog={() => setDialog(false)} />
+      <footer>
           © {new Date().getFullYear()}, Built with
           {` `}
           <a href="https://www.gatsbyjs.com">Gatsby</a>
-        </footer>
-      </div>
+      </footer>
     </>
   )
-}
-
-Layout.propTypes = {
-  children: PropTypes.node.isRequired,
 }
 
 export default Layout

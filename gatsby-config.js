@@ -35,9 +35,9 @@ module.exports = {
     },
     `gatsby-plugin-netlify`,
     {
-      resolve: `gatsby-plugin-netlify-identity-gotrue`,
+      resolve: `gatsby-plugin-netlify-identity`,
       options: {
-        url: `https://wizardly-lalande-0eeaf3.netlify.app`
+        url: `https://cascade-tech-client.netlify.app/.netlify/identity`
       }
     },
     // this (optional) plugin enables Progressive Web App + Offline functionality
