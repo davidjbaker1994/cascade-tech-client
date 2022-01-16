@@ -10,6 +10,7 @@ const UserLoginForm = () => {
     
     const auth = new GoTrue({
         APIUrl: 'https://cascade-tech-client.netlify.app/.netlify/identity',
+        DisableSignup: true,
         audience: '',
         setCookie: false,
       });
