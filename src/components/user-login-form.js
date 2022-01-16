@@ -13,7 +13,7 @@ const UserLoginForm = () => {
         DisableSignup: true,
         audience: '',
         setCookie: false,
-      });
+    });
     
 
     const handleInputChange = (event) => {
@@ -24,10 +24,10 @@ const UserLoginForm = () => {
         });
     }
 
-    const handleSignUp = (e) => {
+    const handleAcceptInvite = (e) => {
         e.preventDefault();
         console.log(formValues)
-        auth.signup(formValues.email, formValues.password)
+        auth.acceptInvite(token, formValues.password, remember)
             .then((response) => console.log('Confirmation email sent', response))
             .catch((error) => console.log("It's an error", error));
     }
@@ -53,7 +53,7 @@ const UserLoginForm = () => {
                 <a href="#" className="green">maximize</a>
                 <h3>User Login</h3>
             </nav>
-            <form className="form" onSubmit={handleSignUp}>
+            <form className="form" onSubmit={handleAcceptInvite}>
                 <div className="nice-input ">  
                     <div className="right-inner-addon ">
                         <li className="profile"><i href="#non"></i>&#160;</li>
