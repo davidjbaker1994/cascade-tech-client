@@ -27,7 +27,7 @@ const UserLoginForm = () => {
     const handleAcceptInvite = (e) => {
         e.preventDefault();
         console.log(formValues)
-        auth.acceptInvite(token, formValues.password, remember)
+        auth.acceptInvite(token, formValues.password)
             .then((response) => console.log('Confirmation email sent', response))
             .catch((error) => console.log("It's an error", error));
     }
